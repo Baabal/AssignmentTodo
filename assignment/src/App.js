@@ -1,12 +1,12 @@
-import UserList from './components/UserList';
-import UserContextProvider from './contexts/UserContext';
+import Register from './authPart/Register';
+
 
 function App() {
   return (
         <div >
-          <UserContextProvider>
-            <UserList />
-          </UserContextProvider>
+        
+          <Register />
+
       </div>
 
   );

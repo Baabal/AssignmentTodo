@@ -3,15 +3,16 @@ import { Form, Button } from "react-bootstrap"
 import {UserContext} from '../contexts/UserContext';
 import {useContext, useState} from 'react';
 
+
 const EditForm = ({theUser}) =>{
 
     const id = theUser.id;
+    const checkList = [" Singing", " Cricket", " Guitar", " Dancing"]; 
 
     const [fname, setFName] = useState(theUser.fname);
     const [lname, setLName] = useState(theUser.lname);
     const [gender, setGender] = useState(theUser.gender);
     const [hobbies, setHobbies] = useState(theUser.hobbies);
-
 
     const {updateUser} = useContext(UserContext);
 
@@ -22,6 +23,11 @@ const EditForm = ({theUser}) =>{
         updateUser(id, updatedUser)
     }
 
+    //  const hobbiesarray = [];
+    //    if (hobbies.e.target.checked != null) {
+    //    hobbiesarray.push(hobbies.e.target.checked.split(','));
+    //  }
+    
      return (
 
         <Form onSubmit={handleSubmit}>
@@ -76,13 +82,17 @@ const EditForm = ({theUser}) =>{
             <Form.Group>
             <div>Hobbies</div>
 
-                <Form.Control
-                    type="text"
-                    placeholder="Hobbies"
-                    name="hobbies"
-                    value={hobbies}
-                    onChange={(e)=> setHobbies(e.target.value)}
-                />
+            {checkList.map((item, index) => (
+                        <div key={index}>
+                            <input name="hobbies" value={item} type="checkbox"
+                            // onChange = {onChangeHobby}
+                            />
+                            <span>{item}</span>
+                            
+                        </div>
+                        ))}
+                
+
             </Form.Group>
             <Button variant="success" type="submit" block>
                 EDIT USER

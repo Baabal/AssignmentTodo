@@ -163,3 +163,18 @@ table.table .avatar {
     color: #000000!important;
 }
 
+.pass-heading{
+
+}
+
+.loginregister{
+	
+	width: 60%;
+    margin-top: 10%;
+    margin-left: 20%;
+
+}
+
+.authHeading{
+	text-align: center;
+}

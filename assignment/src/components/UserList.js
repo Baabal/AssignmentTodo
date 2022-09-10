@@ -50,8 +50,7 @@ const UserList = () => {
                         </tr>
                     </thead>
                     <tbody>
-
-                            {
+                           {
                             sortedUsers.map(user => (
                                 <tr key={user.id}>
                                     <User user={user} />

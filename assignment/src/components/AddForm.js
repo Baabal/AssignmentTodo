@@ -7,25 +7,44 @@ import {useContext, useState} from 'react';
 const AddForm = () =>{
 
     const {addUser} = useContext(UserContext);
-
     const [newUser, setNewUser] = useState({
-        fname:"", lname:"", gender:"", hobbies:""
+        fname:"", lname:"", gender:"", hobbies:[]
     });
 
+    const onChangeHobby = (e) =>{
+
+        const { name, value, checked } = e.target;
+        const {hobbies} = newUser;
+        if (checked)
+        {
+            hobbies.push(value);
+        }
+        else{
+            const index = hobbies.indexOf(value)
+            hobbies.splice(index,1);
+        }
+        setNewUser({...newUser,[name]: hobbies})
+    }
+
     const onInputChange = (e) => {
+        console.log(e.target.name,e.target.value );
         setNewUser({...newUser,[e.target.name]: e.target.value})
     }
-
+    const checkList = [" Singing", " Cricket", " Guitar", " Dancing"]; 
     const {fname, lname, gender, hobbies} = newUser;
-
+  
     const handleSubmit = (e) => {
         e.preventDefault();
+        const {fname, lname, gender, hobbies} = newUser;
+        console.log("hobbies", hobbies);
         addUser(fname, lname, gender, hobbies);
     }
+    
 
      return (
 
         <Form onSubmit={handleSubmit}>
+
             <Form.Group>
             <div>First Name</div>
 
@@ -74,14 +93,25 @@ const AddForm = () =>{
             <Form.Group>
             <div>Hobbies</div>
 
-                <Form.Control
-                    type="hobbies"
-                    name="hobbies"
-                    value={hobbies}
-                    onChange = { (e) => onInputChange(e)}
-                />
+               {/* // <Form.Control
+                    // type="hobbies"
+                    // name="hobbies"
+                    // value={hobbies}
+                    // onChange = { (e) => onInputChange(e)}
+                    
+                /> */}
+              
+                {checkList.map((item, index) => (
+                        <div key={index}>
+                            <input name="hobbies" value={item} type="checkbox"
+                            onChange = {onChangeHobby}/>
+                            <span>{item}</span>
+                            
+                        </div>
+                        ))}
+               
             </Form.Group>
-            <Button variant="success" type="submit" block>
+            <Button variant="success" type="submit" block onClick={handleSubmit}>
                 ADD USER
             </Button>
         </Form>

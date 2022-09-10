@@ -23,7 +23,7 @@ const User = ({user}) => {
             <td>{user.fname}</td>
             <td>{user.lname}</td>
             <td>{user.gender}</td>
-            <td>{user.hobbies}</td>
+            <td>{user.hobbies.join(",")}</td>
             <td>
                 <OverlayTrigger
                     overlay={
