@@ -8,21 +8,26 @@ import "../index.css"
 
 function Login() {
   const [email, setEmail] = useState(" ");
-
   const [password, setPassword] = useState(" ");
-
   const [flag, setFlag] = useState(false);
-
   const [home, setHome] = useState(true);
+  const [passwordType, setPasswordType] = useState("password");
+
+
+  const showPass =()=>{
+    if(passwordType==="password")
+    {
+     setPasswordType("text")
+     return;
+    }
+    setPasswordType("password")
+  }
+
 
   function handleLogin(e) {
-
-    e.preventDefault()
-    ;
+    e.preventDefault()    ;
     let pass = localStorage.getItem("pass").replace(/"/g, "");
-
-    let mail = localStorage.getItem("email").replace(/"/g, "");
-    
+    let mail = localStorage.getItem("email").replace(/"/g, "");   
 
     if (!email || !password) {
       setFlag(true);
@@ -36,15 +41,13 @@ function Login() {
       setFlag(false);
     }
   }
-  // const navigate = useNavigate();
-  // const navigateHome = () => {
-  //   navigate('/Register');
-  // };
+
 
   return (
     <div>
         
       {home ? (
+        
         <form className="loginregister" onSubmit={handleLogin}>
           <h2 className="authHeading">LOGIN</h2>
           <div className="form-group">
@@ -59,25 +62,34 @@ function Login() {
 
           <div className="form-group">
             <label className="pass-heading">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Enter password"
-              onChange={(event) => setPassword(event.target.value)}
-            />
+            <div className="input-group">
+              <input
+                type={passwordType}
+                className="form-control"
+                placeholder="Enter password"
+                onChange={(event) => setPassword(event.target.value)}
+              /> 
+              <div className="input-group-append btn btn-dark" onClick={showPass}>              
+                { passwordType==="password"? <i className="bi bi-eye-slash"></i> :<i className="bi bi-eye"></i> }
+              </div>       
+            </div>
+
+
+
+            <br/> 
+            <button type="submit" className="btn btn-dark btn-lg btn-block">
+              Login
+            </button><br/>
+
+         
           </div>
-
-          <button type="submit" className="btn btn-dark btn-lg btn-block">
-            Login
-          </button><br/>
-
-          
           {flag && (
             <Alert color="primary" variant="danger">
               Try Again
             </Alert>
           )}
         </form>
+        
       ) : (
         <UserContextProvider>
         <UserList />

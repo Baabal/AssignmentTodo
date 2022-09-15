@@ -10,7 +10,16 @@ function Register() {
   const [password, setPassword] = useState("");
   const [flag, setFlag] = useState(false);
   const [login, setLogin] = useState(true);
+  const [passwordType, setPasswordType] = useState("password");
 
+
+  const showPass = () => {
+    if (passwordType === "password") {
+      setPasswordType("text")
+      return;
+    }
+    setPasswordType("password")
+  }
 
   function handleFormSubmit(e) {
 
@@ -38,70 +47,74 @@ function Register() {
   }
 
 
- 
+
 
   return (
     <>
- 
-        <div>
-         
-          {login ? (
-            <form className="loginregister" onSubmit={handleFormSubmit}>
-              <h2 className="authHeading">REGISTER</h2>
 
-              <div className="form-group">
-                <label>Name</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Enter Name"
-                  name="name"
-                  onChange={(event) => setName(event.target.value)}
-                />
-              </div>
+      <div>
 
-              <div className="form-group">
-                <label>Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Enter email"
-                  onChange={(event) => setEmail(event.target.value)}
-                />
-              </div>
+        {login ? (
+          <form className="loginregister" onSubmit={handleFormSubmit}>
+            <h2 className="authHeading">REGISTER</h2>
 
-              <div className="form-group">
-                <label>Password</label>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter Name"
+                name="name"
+                onChange={(event) => setName(event.target.value)}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Enter email"
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Password</label>
+              <div className="input-group">
                 <input
-                  type="password"
+                  type={passwordType}
                   className="form-control"
                   placeholder="Enter password"
                   onChange={(event) => setPassword(event.target.value)}
                 />
+                <div className="input-group-append btn btn-dark" onClick={showPass}>
+                  {passwordType === "password" ? <i className="bi bi-eye-slash"></i> : <i className="bi bi-eye"></i>}
                 </div>
+              </div>
+            </div>
 
+            <button type="submit" className="btn btn-dark btn-lg btn-block">
+              Register
+            </button><br />
 
-              <button type="submit" className="btn btn-dark btn-lg btn-block">
-                Register
-              </button><br/>
-
-              {/* <button  className="btn btn-dark btn-lg btn-block">
+            {/* <button  className="btn btn-dark btn-lg btn-block">
                 log in?                
               </button> */}
-              <p className="loginin">Already Registered!  <button class="btn btn-outline-secondary" type="submit" onClick={handleClick} >Click here</button></p>
-              <br/>
-              
-              {flag && (
-                <Alert variant="danger">
-                  Fill All Details
-                </Alert>
-              )}
-            </form>
-          ) : (
-            <Login />
-          )}
-        </div>
-    
+            <p className="loginin">Already Registered!  <button class="btn btn-outline-secondary" type="submit" onClick={handleClick} >Click here</button></p>
+            <br />
+
+            {flag && (
+              <Alert variant="danger">
+                Fill All Details
+              </Alert>
+            )}
+          </form>
+        ) : (
+          <Login />
+        )}
+      </div>
+
     </>
   );
 }
