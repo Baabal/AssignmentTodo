@@ -17,10 +17,7 @@ function Login() {
 
     e.preventDefault()
     ;
-    let pass = localStorage
-      .getItem("pass")
-
-      .replace(/"/g, "");
+    let pass = localStorage.getItem("pass").replace(/"/g, "");
 
     let mail = localStorage.getItem("email").replace(/"/g, "");
     
