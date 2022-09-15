@@ -34,7 +34,7 @@ const UserList = () => {
     return (
         <>
             <div className="Heading">
-                <Button onClick={handleShow} data-toggle="modal"><span>ADD USER</span></Button>
+                <button type="button" class="btn btn-dark" onClick={handleShow} data-toggle="modal"><span>ADD USER</span></button>
 
             </div>
 
@@ -43,8 +43,8 @@ const UserList = () => {
             </div>
 
 
-            <table className="table table-striped table-hover">
-                <thead>
+            <table className="table table-hover">
+                <thead className="thead-dark" >
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -77,7 +77,7 @@ const UserList = () => {
                 </Modal.Body>
             </Modal>
             <div className="Heading">
-            <Button onClick={logout}  data-toggle="modal"><span>logout</span></Button>					
+            <button type="button" class="btn btn-dark" onClick={logout}  data-toggle="modal"><span>logout</span></button>					
 
             </div>
         </>

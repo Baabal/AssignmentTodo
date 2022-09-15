@@ -67,7 +67,7 @@ const EditForm = ({theUser}) =>{
                 />
                  <label class="form-check-label">
                     Male
-                </label>
+                </label><br/>
                  <input
                     type="radio"
                     name="gender"
@@ -94,9 +94,9 @@ const EditForm = ({theUser}) =>{
                 
 
             </Form.Group>
-            <Button variant="success" type="submit" block>
+            <button type="button" class="btn btn-secondary btn-lg btn-block" block>
                 EDIT USER
-            </Button>
+            </button>
         </Form>
 
      )

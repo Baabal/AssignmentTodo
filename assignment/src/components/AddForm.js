@@ -78,7 +78,7 @@ const AddForm = () =>{
                 />
                  <label class="form-check-label">
                     Male
-                </label>
+                </label><br/>
                  <input
                     type="radio"
                     name="gender"
@@ -111,9 +111,9 @@ const AddForm = () =>{
                         ))}
                
             </Form.Group>
-            <Button variant="success" type="submit" block onClick={handleSubmit}>
+            <button type="button" class="btn btn-secondary btn-lg btn-block"  block onClick={handleSubmit}>
                 ADD USER
-            </Button>
+            </button>
         </Form>
 
      )
