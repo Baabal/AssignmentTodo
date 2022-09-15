@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
+// import { Routes, Route, useNavigate } from "react-router-dom";
 import UserList from "../components/UserList";
 import UserContextProvider from "../contexts/UserContext";
 import "../index.css"
+// import Register from "./Register";
 
 function Login() {
   const [email, setEmail] = useState(" ");
@@ -28,15 +30,16 @@ function Login() {
     
     else if (password !== pass || email !== mail) {
       setFlag(true);
-
-
-    } 
-    
+    }    
     else {
       setHome(!home);
       setFlag(false);
     }
   }
+  // const navigate = useNavigate();
+  // const navigateHome = () => {
+  //   navigate('/Register');
+  // };
 
   return (
     <div>
@@ -68,6 +71,7 @@ function Login() {
             Login
           </button><br/>
 
+          
           {flag && (
             <Alert color="primary" variant="danger">
               Try Again

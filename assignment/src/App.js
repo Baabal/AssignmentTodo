@@ -1,3 +1,4 @@
+import Login from './authPart/Login';
 import Register from './authPart/Register';
 
 

@@ -85,9 +85,11 @@ function Register() {
                 Register
               </button><br/>
 
-              <button onClick={handleClick} className="btn btn-dark btn-lg btn-block">
+              {/* <button  className="btn btn-dark btn-lg btn-block">
                 log in?                
-              </button><br/>
+              </button> */}
+              <p className="loginin">Already Registered!  <button class="btn btn-outline-secondary" type="submit" onClick={handleClick} >Click here</button></p>
+              <br/>
               
               {flag && (
                 <Alert variant="danger">
